@@ -13,7 +13,7 @@ function Directory() {
 		loadEmployees();
 	}, []);
 
-    function sortByAge ()
+	// function sortByAge ()
 
 	function loadEmployees() {
 		API.fetchUsers()
