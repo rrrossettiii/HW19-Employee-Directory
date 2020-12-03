@@ -21,9 +21,12 @@ function Directory() {
 
 	function init() {
 		console.log("running effect");
-		if (yourEmployees === []) {
+		console.log(yourEmployees);
+		if (!yourEmployees[0]) {
+			console.log("loaded new");
 			loadEmployees();
 		} else {
+			console.log("loaded old");
 			setSortedEmployeeState({ employeeList: yourEmployees });
 		}
 	}
