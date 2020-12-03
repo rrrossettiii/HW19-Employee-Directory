@@ -30,15 +30,19 @@ function SortDropdown() {
 		<div>
 			<Dropdown>
 				<Dropdown.Toggle variant="secondary" id="dropdown-basic">
-					Sort by: {sortState.country}
-					{sortState.age}
+					Country: {sortState.country}
+				</Dropdown.Toggle>
+				<Dropdown.Menu className="scrollList">
+					<Dropdown.Menu>{Countries}</Dropdown.Menu>
+				</Dropdown.Menu>
+			</Dropdown>
+			<Dropdown>
+				<Dropdown.Toggle variant="secondary" id="dropdown-basic">
+					Age: {sortState.age}
 				</Dropdown.Toggle>
 				<Dropdown.Menu>
-					<Dropdown.Item onClick={sortByAge}> {"<"} Age</Dropdown.Item>
-					<Dropdown.Menu className="scrollList">
-						<Dropdown.ItemText>Countries:</Dropdown.ItemText>
-						<Dropdown.Menu>{Countries}</Dropdown.Menu>
-					</Dropdown.Menu>
+					<Dropdown.Item onClick={sortByAge}>Youngest</Dropdown.Item>
+					<Dropdown.Item onClick={sortByAge}>Oldest</Dropdown.Item>
 				</Dropdown.Menu>
 			</Dropdown>
 		</div>

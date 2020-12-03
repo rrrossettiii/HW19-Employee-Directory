@@ -13,10 +13,19 @@ function App() {
 	return (
 		<Router>
 			<div>
-				<Navbar bg="dark" variant="dark">
+				<Navbar className="justify-content-center" bg="dark" variant="dark">
 					<Navbar.Brand>Staff Index</Navbar.Brand>
 				</Navbar>
 				<Directory />
+				<Navbar
+					className="justify-content-end footer"
+					bg="light"
+					variant="light"
+				>
+					<Navbar.Brand>
+						<span>Staff Index {new Date().getFullYear()}</span>
+					</Navbar.Brand>
+				</Navbar>
 			</div>
 		</Router>
 	);

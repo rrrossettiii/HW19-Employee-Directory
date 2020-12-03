@@ -9,13 +9,18 @@ import SortDropdown from "../SortDropdown";
 // Context;
 // =============:
 
-const NavBar = () => {
+const SortNav = () => {
 	return (
 		<Nav
 			className="justify-content-end"
 			variant="tabs"
 			defaultActiveKey="/home"
 		>
+			<Nav.Item className="yourEmployees">
+				<Nav.Link disabled>
+					<h4>Your Employees:</h4>
+				</Nav.Link>
+			</Nav.Item>
 			<SortDropdown />
 			<Nav.Item>
 				<Nav.Link href="/home">Reset</Nav.Link>
@@ -24,4 +29,4 @@ const NavBar = () => {
 	);
 };
 
-export default NavBar;
+export default SortNav;

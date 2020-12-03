@@ -1,0 +1,14 @@
+.nav {
+    padding-top: 1em;
+}
+
+.dropdown-item {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.yourEmployees {
+position: absolute;
+left: 0;
+top: 4em;
+}

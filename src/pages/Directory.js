@@ -6,7 +6,7 @@ import API from "../utils/API";
 import DirectoryContext from "../utils/DirectoryContext";
 
 // Components;
-import NavBar from "../components/NavBar";
+import SortNav from "../components/SortNav";
 import CardContainer from "../components/CardContainer";
 
 function Directory() {
@@ -30,15 +30,24 @@ function Directory() {
 
 	useEffect(init, []);
 
-	function sortByAge() {
+	function sortByAge(event) {
 		const byAge = sortedEmployeeState.employeeList.sort((a, b) => {
 			return a.age - b.age;
 		});
-		setSortedEmployeeState({ employeeList: byAge });
-		if (sortState.country === "") {
-			setSortState({ age: "<Age" });
-		} else {
-			setSortState({ country: sortState.country, age: " + (< Age)" });
+		if (event.target.innerText === "Youngest") {
+			setSortedEmployeeState({ employeeList: byAge });
+			if (sortState.country === "") {
+				setSortState({ age: "Youngest" });
+			} else {
+				setSortState({ country: sortState.country, age: "Youngest" });
+			}
+		} else if (event.target.innerText === "Oldest") {
+			setSortedEmployeeState({ employeeList: byAge.reverse() });
+			if (sortState.country === "") {
+				setSortState({ age: "Oldest" });
+			} else {
+				setSortState({ country: sortState.country, age: "Oldest" });
+			}
 		}
 	}
 
@@ -46,11 +55,7 @@ function Directory() {
 		const country = event.target.innerText;
 		const thisCountry = yourEmployees.filter(user => user.country === country);
 		setSortedEmployeeState({ employeeList: thisCountry });
-		if (sortState.age === "") {
-			setSortState({ country: country });
-		} else {
-			setSortState({ country: country, age: " + (< Age)" });
-		}
+		setSortState({ country: country });
 	}
 
 	function loadEmployees() {
@@ -73,7 +78,7 @@ function Directory() {
 				sortByCountry
 			}}
 		>
-			<NavBar />
+			<SortNav />
 			<div>
 				<CardContainer />
 			</div>
