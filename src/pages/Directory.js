@@ -6,7 +6,6 @@ import API from "../utils/API";
 import DirectoryContext from "../utils/DirectoryContext";
 
 // Components;
-import Container from "../components/Container";
 import CardContainer from "../components/CardContainer";
 
 function Directory() {
@@ -38,9 +37,7 @@ function Directory() {
 	return (
 		<DirectoryContext.Provider value={sortedState}>
 			<div>
-				<Container>
-					<CardContainer />
-				</Container>
+				<CardContainer />
 			</div>
 		</DirectoryContext.Provider>
 	);

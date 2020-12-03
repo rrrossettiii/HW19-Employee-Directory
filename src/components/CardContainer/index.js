@@ -1,6 +1,10 @@
 import React from "react";
-import Card from "../Card";
 import "./style.css";
+
+// Components;
+// ==============:
+import UserCard from "../UserCard";
+import { Container, Row } from "react-bootstrap";
 
 // Context;
 // =============:
@@ -11,10 +15,16 @@ import DirectoryContext from "../../utils/DirectoryContext";
 function CardContainer() {
 	const { employeeList } = useContext(DirectoryContext);
 	const cards = employeeList.map((user, index) => (
-		<Card key={index} user={user} />
+		<UserCard key={index} user={user} />
 	));
 	console.log("card container", cards);
-	return <div className="jumbotron card-container">{cards}</div>;
+	return (
+		<div className="jumbotron card-container">
+			<Container fluid>
+				<Row>{cards}</Row>
+			</Container>
+		</div>
+	);
 }
 
 export default CardContainer;

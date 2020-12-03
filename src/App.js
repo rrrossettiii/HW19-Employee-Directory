@@ -8,7 +8,6 @@ import Directory from "./pages/Directory";
 
 // Components;
 import Nav from "./components/Nav";
-import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
 
 function App() {
@@ -16,9 +15,7 @@ function App() {
 		<Router>
 			<div>
 				<Nav />
-				<Wrapper>
-					<Directory />
-				</Wrapper>
+				<Directory />
 				<Footer />
 			</div>
 		</Router>
