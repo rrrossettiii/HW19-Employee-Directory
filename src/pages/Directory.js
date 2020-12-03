@@ -6,6 +6,7 @@ import API from "../utils/API";
 import DirectoryContext from "../utils/DirectoryContext";
 
 // Components;
+import NavBar from "../components/NavBar";
 import CardContainer from "../components/CardContainer";
 
 function Directory() {
@@ -36,6 +37,7 @@ function Directory() {
 
 	return (
 		<DirectoryContext.Provider value={sortedState}>
+			<NavBar />
 			<div>
 				<CardContainer />
 			</div>

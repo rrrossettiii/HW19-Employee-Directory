@@ -14,14 +14,13 @@ import DirectoryContext from "../../utils/DirectoryContext";
 // Loops through 'employeeList' and creates a card for each entry;
 function CardContainer() {
 	const { employeeList } = useContext(DirectoryContext);
-	const cards = employeeList.map((user, index) => (
+	const Cards = employeeList.map((user, index) => (
 		<UserCard key={index} user={user} />
 	));
-	console.log("card container", cards);
 	return (
-		<div className="jumbotron card-container">
+		<div>
 			<Container fluid>
-				<Row>{cards}</Row>
+				<Row>{Cards}</Row>
 			</Container>
 		</div>
 	);

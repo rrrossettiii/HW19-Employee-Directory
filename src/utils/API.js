@@ -13,7 +13,8 @@ export default {
 					image: user.picture.large,
 					email: user.email,
 					phone: user.cell,
-					location: user.location.state + ", " + user.location.country
+					location: user.location.state + ", " + user.location.country,
+					country: user.location.country
 				};
 			});
 		});

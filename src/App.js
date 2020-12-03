@@ -7,14 +7,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Directory from "./pages/Directory";
 
 // Components;
-import Nav from "./components/Nav";
+
 import Footer from "./components/Footer";
 
 function App() {
 	return (
 		<Router>
 			<div>
-				<Nav />
 				<Directory />
 				<Footer />
 			</div>
