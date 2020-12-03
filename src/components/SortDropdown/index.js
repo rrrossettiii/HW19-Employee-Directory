@@ -3,7 +3,7 @@ import "./style.css";
 
 // Components;
 // ============:
-import { Dropdown } from "react-bootstrap";
+import Dropdown from "react-bootstrap/Dropdown";
 
 // Context;
 // =============:
@@ -32,9 +32,7 @@ function SortDropdown() {
 				<Dropdown.Toggle variant="secondary" id="dropdown-basic">
 					Country: {sortState.country}
 				</Dropdown.Toggle>
-				<Dropdown.Menu className="scrollList">
-					<Dropdown.Menu>{Countries}</Dropdown.Menu>
-				</Dropdown.Menu>
+				<Dropdown.Menu className="scrollList">{Countries}</Dropdown.Menu>
 			</Dropdown>
 			<Dropdown>
 				<Dropdown.Toggle variant="secondary" id="dropdown-basic">
