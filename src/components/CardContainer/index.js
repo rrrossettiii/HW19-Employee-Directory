@@ -5,6 +5,7 @@ import "./style.css";
 // ==============:
 import UserCard from "../UserCard";
 import { Container, Row } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 // Context;
 // =============:
@@ -20,7 +21,13 @@ function CardContainer() {
 	return (
 		<div>
 			<Container fluid>
-				<Row>{Cards}</Row>
+				<Row>
+					{Cards}
+					<Card className="blank"></Card>
+					<Card className="blank"></Card>
+					<Card className="blank"></Card>
+					<Card className="blank"></Card>
+				</Row>
 			</Container>
 		</div>
 	);
