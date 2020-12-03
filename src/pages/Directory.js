@@ -10,38 +10,54 @@ import NavBar from "../components/NavBar";
 import CardContainer from "../components/CardContainer";
 
 function Directory() {
-	const yourEmployees = JSON.parse(localStorage.getItem("EmployeeList"));
-	const [sortedState, setSortedState] = useState({
+	const yourEmployees = JSON.parse(localStorage.getItem("EmployeeList")) || [];
+	const [sortState, setSortState] = useState({
+		country: "",
+		age: ""
+	});
+	const [sortedEmployeeState, setSortedEmployeeState] = useState({
 		employeeList: []
 	});
 
-	useEffect(() => {
+	function init() {
 		console.log("running effect");
-		if (yourEmployees) {
-			setSortedState({ employeeList: yourEmployees });
-		} else {
+		if (yourEmployees === []) {
 			loadEmployees();
+		} else {
+			setSortedEmployeeState({ employeeList: yourEmployees });
 		}
-	}, []);
+	}
+
+	useEffect(init, []);
 
 	function sortByAge() {
-		const byAge = sortedState.employeeList.sort((a, b) => {
+		const byAge = sortedEmployeeState.employeeList.sort((a, b) => {
 			return a.age - b.age;
 		});
-		setSortedState({ employeeList: byAge });
+		setSortedEmployeeState({ employeeList: byAge });
+		if (sortState.country === "") {
+			setSortState({ age: "<Age" });
+		} else {
+			setSortState({ country: sortState.country, age: " + (< Age)" });
+		}
 	}
 
 	function sortByCountry(event) {
 		const country = event.target.innerText;
 		const thisCountry = yourEmployees.filter(user => user.country === country);
-		setSortedState({ employeeList: thisCountry });
+		setSortedEmployeeState({ employeeList: thisCountry });
+		if (sortState.age === "") {
+			setSortState({ country: country });
+		} else {
+			setSortState({ country: country, age: " + (< Age)" });
+		}
 	}
 
 	function loadEmployees() {
 		API.fetchEmployees()
 			.then(users => {
 				localStorage.setItem("EmployeeList", JSON.stringify(users));
-				setSortedState({ employeeList: users });
+				setSortedEmployeeState({ employeeList: users });
 			})
 
 			.catch(err => console.log(err));
@@ -49,7 +65,13 @@ function Directory() {
 
 	return (
 		<DirectoryContext.Provider
-			value={{ yourEmployees, sortedState, sortByAge, sortByCountry }}
+			value={{
+				yourEmployees,
+				sortedEmployeeState,
+				sortState,
+				sortByAge,
+				sortByCountry
+			}}
 		>
 			<NavBar />
 			<div>

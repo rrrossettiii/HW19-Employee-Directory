@@ -7,15 +7,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Directory from "./pages/Directory";
 
 // Components;
-
-import Footer from "./components/Footer";
+import { Navbar } from "react-bootstrap";
 
 function App() {
 	return (
 		<Router>
 			<div>
+				<Navbar bg="dark" variant="dark">
+					<Navbar.Brand>Staff Index</Navbar.Brand>
+				</Navbar>
 				<Directory />
-				<Footer />
 			</div>
 		</Router>
 	);
