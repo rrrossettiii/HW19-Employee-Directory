@@ -11,9 +11,10 @@ import { useContext } from "react";
 import DirectoryContext from "../../utils/DirectoryContext";
 
 const NavBar = () => {
-	const { sortedState } = useContext(DirectoryContext);
+	const { yourEmployees } = useContext(DirectoryContext);
+	const { sortByCountry } = useContext(DirectoryContext);
 	const { sortByAge } = useContext(DirectoryContext);
-	const CountriesList = sortedState.employeeList
+	const CountriesList = yourEmployees
 		.map(({ country }) => country)
 		.filter(function (item, index, inputArray) {
 			return inputArray.indexOf(item) === index;
@@ -21,7 +22,9 @@ const NavBar = () => {
 		.sort();
 	console.log(CountriesList);
 	const Countries = CountriesList.map((country, index) => (
-		<Dropdown.Item key={index}>{country}</Dropdown.Item>
+		<Dropdown.Item onClick={sortByCountry} key={index}>
+			{country}
+		</Dropdown.Item>
 	));
 	return (
 		<Nav variant="tabs" defaultActiveKey="/home">

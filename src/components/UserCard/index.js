@@ -14,11 +14,13 @@ function UserCard({ user }) {
 					{user.name} <small>Age: {user.age}</small>{" "}
 				</Card.Title>
 				<Card.Text>
-					<p>{user.location}</p>
-					<p></p>
-					<p>Username: {user.username}</p>
-					<p>Mobile: {user.phone}</p>
-					<p>Email: {user.email}</p>
+					{user.location}
+					<br />
+					Username: {user.username}
+					<br />
+					Mobile: {user.phone}
+					<br />
+					Email: {user.email}
 				</Card.Text>
 			</Card.Body>
 		</Card>

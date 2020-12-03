@@ -10,13 +10,18 @@ import NavBar from "../components/NavBar";
 import CardContainer from "../components/CardContainer";
 
 function Directory() {
+	const yourEmployees = JSON.parse(localStorage.getItem("EmployeeList"));
 	const [sortedState, setSortedState] = useState({
 		employeeList: []
 	});
 
 	useEffect(() => {
 		console.log("running effect");
-		loadEmployees();
+		if (yourEmployees) {
+			setSortedState({ employeeList: yourEmployees });
+		} else {
+			loadEmployees();
+		}
 	}, []);
 
 	function sortByAge() {
@@ -26,9 +31,16 @@ function Directory() {
 		setSortedState({ employeeList: byAge });
 	}
 
+	function sortByCountry(event) {
+		const country = event.target.innerText;
+		const thisCountry = yourEmployees.filter(user => user.country === country);
+		setSortedState({ employeeList: thisCountry });
+	}
+
 	function loadEmployees() {
 		API.fetchEmployees()
 			.then(users => {
+				localStorage.setItem("EmployeeList", JSON.stringify(users));
 				setSortedState({ employeeList: users });
 			})
 
@@ -36,7 +48,9 @@ function Directory() {
 	}
 
 	return (
-		<DirectoryContext.Provider value={{ sortedState, sortByAge }}>
+		<DirectoryContext.Provider
+			value={{ yourEmployees, sortedState, sortByAge, sortByCountry }}
+		>
 			<NavBar />
 			<div>
 				<CardContainer />
