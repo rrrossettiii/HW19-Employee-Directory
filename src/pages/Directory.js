@@ -21,7 +21,7 @@ function Directory() {
 
 	function sortByAge() {
 		const byAge = sortedState.employeeList.sort((a, b) => {
-			return a.dob.age - b.dob.age;
+			return a.age - b.age;
 		});
 		setSortedState({ employeeList: byAge });
 	}
@@ -36,7 +36,7 @@ function Directory() {
 	}
 
 	return (
-		<DirectoryContext.Provider value={sortedState}>
+		<DirectoryContext.Provider value={{ sortedState, sortByAge }}>
 			<NavBar />
 			<div>
 				<CardContainer />

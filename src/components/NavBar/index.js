@@ -11,8 +11,9 @@ import { useContext } from "react";
 import DirectoryContext from "../../utils/DirectoryContext";
 
 const NavBar = () => {
-	const { employeeList } = useContext(DirectoryContext);
-	const CountriesList = employeeList
+	const { sortedState } = useContext(DirectoryContext);
+	const { sortByAge } = useContext(DirectoryContext);
+	const CountriesList = sortedState.employeeList
 		.map(({ country }) => country)
 		.filter(function (item, index, inputArray) {
 			return inputArray.indexOf(item) === index;
@@ -29,7 +30,7 @@ const NavBar = () => {
 					Sort by:
 				</Dropdown.Toggle>
 				<Dropdown.Menu>
-					<Dropdown.Item href="#/action-1">Age</Dropdown.Item>
+					<Dropdown.Item onClick={sortByAge}>Age</Dropdown.Item>
 					<Dropdown.Menu className="scrollList">
 						<Dropdown.ItemText>Countries:</Dropdown.ItemText>
 						<Dropdown.Menu>{Countries}</Dropdown.Menu>

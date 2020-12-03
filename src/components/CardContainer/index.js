@@ -13,8 +13,8 @@ import DirectoryContext from "../../utils/DirectoryContext";
 
 // Loops through 'employeeList' and creates a card for each entry;
 function CardContainer() {
-	const { employeeList } = useContext(DirectoryContext);
-	const Cards = employeeList.map((user, index) => (
+	const { sortedState } = useContext(DirectoryContext);
+	const Cards = sortedState.employeeList.map((user, index) => (
 		<UserCard key={index} user={user} />
 	));
 	return (
