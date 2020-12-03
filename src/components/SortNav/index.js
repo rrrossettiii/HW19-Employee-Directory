@@ -6,9 +6,6 @@ import "./style.css";
 import { Nav } from "react-bootstrap";
 import SortDropdown from "../SortDropdown";
 
-// Context;
-// =============:
-
 const SortNav = () => {
 	return (
 		<Nav
