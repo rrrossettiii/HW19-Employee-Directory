@@ -1,30 +1,22 @@
 import React from "react";
-import CardBody from "../CardBody";
-import CardBtn from "../CardBtn";
-import CardImg from "../CardImage";
-import CardHeading from "../CardHeading";
 import "./style.css";
 
-function Card(props) {
-  /* 
-    Add props to the components below as explained in the README for this activity.
-  */
-  return (
-    <div>
-      <CardHeading />
-      <CardImg  />
-      <CardBody  />
-      {!props.image && <i className="fa fa-spinner fa-spin" aria-hidden="true" />}
-      <CardBtn
-        style={{ opacity: props.image ? 1 : 0 }}
-        data-value="back"
-      />
-      <CardBtn
-        style={{ opacity: props.image ? 1 : 0 }}
-        data-value="next"
-      />
-    </div>
-  );
+function Card({ user }) {
+	return (
+		<div className="col-md-3">
+			<div>
+				<h2>{user.name}</h2>
+				<div>
+					<img className="card-img" src={user.image} alt="User Image" />
+				</div>
+				<p>{user.location}</p>
+				<p>Username: {user.username}</p>
+				<p>Age: {user.age}</p>
+				<p>Mobile: {user.phone}</p>
+				<p>Email: {user.email}</p>
+			</div>
+		</div>
+	);
 }
 
 export default Card;

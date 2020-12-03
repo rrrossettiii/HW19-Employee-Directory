@@ -1,7 +1,12 @@
 import React from "react";
+import DirectoryContext from "../../utils/DirectoryContext";
 
 function CardTitleText() {
-  return <h2>{"NAME GOES HERE"}</h2>;
+	return (
+		<DirectoryContext.Consumer>
+			{user => user?.name && <h2>{user?.name}</h2>}
+		</DirectoryContext.Consumer>
+	);
 }
 
 export default CardTitleText;

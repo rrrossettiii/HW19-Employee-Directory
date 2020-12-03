@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/API";
 
+// Context;
+// =============:
+import DirectoryContext from "../utils/DirectoryContext";
+
 // Components;
 import Container from "../components/Container";
+import CardContainer from "../components/CardContainer";
 
 function Directory() {
 	const [sortedState, setSortedState] = useState({
@@ -10,24 +15,34 @@ function Directory() {
 	});
 
 	useEffect(() => {
+		console.log("running effect");
 		loadEmployees();
 	}, []);
 
-	// function sortByAge ()
+	function sortByAge() {
+		const byAge = sortedState.employeeList.sort((a, b) => {
+			return a.dob.age - b.dob.age;
+		});
+		setSortedState({ employeeList: byAge });
+	}
 
 	function loadEmployees() {
-		API.fetchUsers()
+		API.fetchEmployees()
 			.then(users => {
-				console.log(users);
+				setSortedState({ employeeList: users });
 			})
 
 			.catch(err => console.log(err));
 	}
 
 	return (
-		<div>
-			<Container></Container>
-		</div>
+		<DirectoryContext.Provider value={sortedState}>
+			<div>
+				<Container>
+					<CardContainer />
+				</Container>
+			</div>
+		</DirectoryContext.Provider>
 	);
 }
 
